@@ -61,13 +61,18 @@ function exibeResultados (conversoes) {
 
 function alteraCorDeFundo(temperaturaCelsius) {
     var divResultados = document.querySelector('#resultados');
-    if(temperaturaCelsius < 25) {
-        divResultados.style.backgroundImage = "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)";
-    } else if (temperaturaCelsius >= 25 && temperaturaCelsius <= 30) {
-        divResultados.style.backgroundImage = "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)";
+    var red = 0;
+    var green = 255;
+    var blue = 0;
+    if(temperaturaCelsius > 0) {
+        var red =+ temperaturaCelsius;
+        var green =- temperaturaCelsius;
     } else {
-        divResultados.style.backgroundImage = "linear-gradient(120deg, #f6d365 0%, #fda085 100%)";
+        var blue =- temperaturaCelsius;
+        var green =+ temperaturaCelsius;
     }
+    divResultados.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, 0.7)`;
+    return divResultados.style.backgroundColor;
 }
 
 function converterFormulario () {
